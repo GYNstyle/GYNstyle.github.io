@@ -64,6 +64,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vue中监听浏览器关闭事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/" class="article-date">
+  <time datetime="2020-06-11T07:42:31.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/">监听浏览器关闭事件，并发送异步请求</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><p>监听用户关闭浏览器事件，若关闭则发送异步请求给后端。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>浏览器关闭事件并不会触发vue实例的beforeDestroy和destroyed函数，因而需要使用window.unload，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/unload" target="_blank" rel="noopener">MDN</a>。但这两个事件并不支持异步请求。</p>
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>使用navigator.sendBeacon(url, data)，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon" target="_blank" rel="noopener">MDN</a>。其中，URL无需特殊处理，与你项目中发送异步请求的URL相同即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 在created钩子函数中注册unload事件</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在methods中添加处理的函数</span></span><br><span class="line">unloadEvent() &#123;</span><br><span class="line">    <span class="comment">// 处理其他逻辑</span></span><br><span class="line">    navigator.sendBeacon(<span class="string">`yoururl`</span>, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在destroyed钩子函数中，记得注销掉unload事件</span></span><br><span class="line"><span class="built_in">window</span>.removeEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/" data-id="ckbaijuod0000pr8zhzeua98t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用Flex布局实现左右拖动和上下拖动" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/" class="article-date">
@@ -87,6 +127,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近的项目需要实现左右拖动和上下拖动的样式，先是使用float实现了简易版，后看到同事使用Flex布局实现了拖动效果，抽取成了组件。</p>
+<p>最终效果</p>
+<p><img src="/images/drag-sample.png" alt="alt"></p>
 <p>源码：<a href="https://github.com/GYNstyle/drag-sample" target="_blank" rel="noopener">github</a></p>
 
       
@@ -253,7 +295,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -264,6 +306,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/">监听浏览器关闭事件，并发送异步请求</a>
+          </li>
         
           <li>
             <a href="/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/">使用Flex布局实现左右拖动和上下拖动</a>
