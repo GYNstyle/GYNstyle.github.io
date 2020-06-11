@@ -87,9 +87,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><p>监听用户关闭浏览器事件，若关闭则发送异步请求给后端。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>浏览器关闭事件并不会触发vue实例的beforeDestroy和destroyed函数，因而需要使用window.unload，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/unload" target="_blank" rel="noopener">MDN</a>。但这两个事件并不支持异步请求。</p>
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>使用navigator.sendBeacon(url, data)，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon" target="_blank" rel="noopener">MDN</a>。其中，URL无需特殊处理，与你项目中发送异步请求的URL相同即可。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 在created钩子函数中注册unload事件</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在methods中添加处理的函数</span></span><br><span class="line">unloadEvent() &#123;</span><br><span class="line">    <span class="comment">// 处理其他逻辑</span></span><br><span class="line">    navigator.sendBeacon(<span class="string">`yoururl`</span>, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在destroyed钩子函数中，记得注销掉unload事件</span></span><br><span class="line"><span class="built_in">window</span>.removeEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题1：浏览器关闭事件并不会触发vue实例的beforeDestroy和destroyed函数，所以无法在这两个钩子函数中处理浏览器关闭事件。</p>
+<p>解决方式：注册unload事件，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/unload" target="_blank" rel="noopener">MDN</a>。</p>
+<p>问题2：用户代理通常会忽略在unload事件处理器中的异步XMLHttpRequest。</p>
+<p>解决方式：使用navigator.sendBeacon(url, data)，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon" target="_blank" rel="noopener">MDN</a></p>
+<h2 id="Vue中的具体实现"><a href="#Vue中的具体实现" class="headerlink" title="Vue中的具体实现"></a>Vue中的具体实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在created钩子函数中注册unload事件</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在methods中添加处理的函数</span></span><br><span class="line">unloadEvent() &#123;</span><br><span class="line">    <span class="comment">// 处理其他逻辑</span></span><br><span class="line">    navigator.sendBeacon(<span class="string">`yoururl`</span>, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在destroyed钩子函数中，记得注销掉unload事件</span></span><br><span class="line"><span class="built_in">window</span>.removeEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -134,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/" data-id="ckat5gd2t0000xn0m7kqeb10w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/" data-id="ckaq9o7pd0000m88zhogsb8ji" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/27/Monaco-Editor%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckapf9upu0000lj0m7qdy58nv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/27/Monaco-Editor%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckapalkn30000ku8ze55hcu84" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Monaco-Editor%E3%80%81%E7%BC%96%E8%BE%91%E5%99%A8%E3%80%81Vue%E3%80%81SQL%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" rel="tag">Monaco Editor、编辑器、Vue、SQL自动补全</a></li></ul>
@@ -251,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/%E7%90%86%E8%A7%A3%E9%97%AD%E5%8C%85/" data-id="ckapf9uq30003lj0m6twuc6z8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/20/%E7%90%86%E8%A7%A3%E9%97%AD%E5%8C%85/" data-id="ckaq9o7pr0001m88zcl60ghs0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AD%E5%8C%85-JS/" rel="tag">闭包 JS</a></li></ul>
