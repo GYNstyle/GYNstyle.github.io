@@ -1,374 +1,526 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="img/favicon.ico">
 
-  
-  <title>Hello World</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hello World">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="gyn">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    <title>
+        
+          Yanning的博客 | Yanning&#39;s Blog
+        
+    </title>
 
+    <link rel="canonical" href="http://guoyanning.com/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hello World</a>
-      </h1>
-      
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yanning&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Vue中监听浏览器关闭事件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/" class="article-date">
-  <time datetime="2020-06-11T07:42:31.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/">监听浏览器关闭事件，并发送异步请求</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h2><p>监听用户关闭浏览器事件，若关闭则发送异步请求给后端。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题1：浏览器关闭事件并不会触发vue实例的beforeDestroy和destroyed函数，所以无法在这两个钩子函数中处理浏览器关闭事件。</p>
-<p>解决方式：注册unload事件，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/unload" target="_blank" rel="noopener">MDN</a>。</p>
-<p>问题2：用户代理通常会忽略在unload事件处理器中的异步XMLHttpRequest。</p>
-<p>解决方式：使用navigator.sendBeacon(url, data)，参见<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon" target="_blank" rel="noopener">MDN</a></p>
-<h2 id="Vue中的具体实现"><a href="#Vue中的具体实现" class="headerlink" title="Vue中的具体实现"></a>Vue中的具体实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在created钩子函数中注册unload事件</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在methods中添加处理的函数</span></span><br><span class="line">unloadEvent() &#123;</span><br><span class="line">    <span class="comment">// 处理其他逻辑</span></span><br><span class="line">    navigator.sendBeacon(<span class="string">`yoururl`</span>, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在destroyed钩子函数中，记得注销掉unload事件</span></span><br><span class="line"><span class="built_in">window</span>.removeEventListener(<span class="string">'unload'</span>, <span class="keyword">this</span>.unloadEvent)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/" data-id="ckbaijuod0000pr8zhzeua98t" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-使用Flex布局实现左右拖动和上下拖动" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/" class="article-date">
-  <time datetime="2020-05-28T04:14:37.000Z" itemprop="datePublished">2020-05-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/">使用Flex布局实现左右拖动和上下拖动</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近的项目需要实现左右拖动和上下拖动的样式，先是使用float实现了简易版，后看到同事使用Flex布局实现了拖动效果，抽取成了组件。</p>
-<p>最终效果</p>
-<p><img src="/images/drag-sample.png" alt="alt"></p>
-<p>源码：<a href="https://github.com/GYNstyle/drag-sample" target="_blank" rel="noopener">github</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/" data-id="ckaq9o7pd0000m88zhogsb8ji" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Monaco-Editor在Vue项目中的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/27/Monaco-Editor%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-05-27T11:56:02.000Z" itemprop="datePublished">2020-05-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/27/Monaco-Editor%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">Monaco Editor在Vue项目中的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文以SQL为例，展示Monaco Editor在Vue项目中的使用</p>
-<h2 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h2><h3 id="Monaco-Editor的安装"><a href="#Monaco-Editor的安装" class="headerlink" title="Monaco Editor的安装"></a>Monaco Editor的安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save monaco-editor</span><br></pre></td></tr></table></figure>
-
-<h3 id="Webpack打包Monaco-Editor的插件"><a href="#Webpack打包Monaco-Editor的插件" class="headerlink" title="Webpack打包Monaco Editor的插件"></a>Webpack打包Monaco Editor的插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev monaco-editor-webpack-plugin</span><br></pre></td></tr></table></figure>
-
-<h3 id="Monaco-Editor汉化包"><a href="#Monaco-Editor汉化包" class="headerlink" title="Monaco Editor汉化包"></a>Monaco Editor汉化包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save monaco-editor-locales-plugin</span><br></pre></td></tr></table></figure>
-
-<h2 id="vue-config-js配置"><a href="#vue-config-js配置" class="headerlink" title="vue.config.js配置"></a>vue.config.js配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MonacoEditorWebpackPlugin = <span class="built_in">require</span>(<span class="string">'monaco-editor-webpack-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> MonacoEditorLocalesPlugin = <span class="built_in">require</span>(<span class="string">'monaco-editor-locales-plugin'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    configurWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        config.plugins.push(<span class="keyword">new</span> MonacoEditorWebpackPlugin(&#123;</span><br><span class="line">            languages: [<span class="string">'sql'</span>]</span><br><span class="line">        &#125;))</span><br><span class="line">        config.plugins.push(<span class="keyword">new</span> MonacoEditorLocalesPlugin(&#123;</span><br><span class="line">            languages: [<span class="string">'es'</span>, <span class="string">'zh-cn'</span>],</span><br><span class="line">            defaultLanguages: <span class="string">'zh-cn'</span>,</span><br><span class="line">            logUnmatched: <span class="literal">false</span>,</span><br><span class="line">            mapLanguages: &#123;&#125;</span><br><span class="line">        &#125;))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="在Vue文件中使用Monaco-Editor"><a href="#在Vue文件中使用Monaco-Editor" class="headerlink" title="在Vue文件中使用Monaco Editor"></a>在Vue文件中使用Monaco Editor</h3><p>创建div，并添加ref属性，用于初始化和使用Monaco Editor</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"editor"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>初始化、主题色修改、自动补全</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> monaco <span class="keyword">from</span> <span class="string">'monaco-editor'</span></span><br><span class="line"><span class="comment">// 修改编辑器主题（可引入本地json样式文件，也可以从从社区获取定义好的主题）</span></span><br><span class="line"><span class="keyword">import</span>(<span class="string">'./Theme.json'</span>).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    monaco.editor.defineTheme(<span class="string">'yourTheme'</span>, data)</span><br><span class="line">    monaco.editor.setTheme(<span class="string">'yourTheme'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">this</span> = _this <span class="comment">// 用于在Editor函数内使用this</span></span><br><span class="line">_this.monacoEditor = monaco.editor.create(_this.$ref.container, &#123;</span><br><span class="line">    value: _this.copyCode || _this.codes ,</span><br><span class="line">    language: <span class="string">'sql'</span>,</span><br><span class="line">    <span class="comment">// 其他需要配置的属性</span></span><br><span class="line">    minimap: &#123;</span><br><span class="line">        enabled: <span class="literal">false</span> <span class="comment">// 编辑器右侧的缩略图</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 自动补全</span></span><br><span class="line"><span class="keyword">this</span>.monacoHints = monaco.languages.registerCompletionItemProvider(<span class="string">'sql'</span>, &#123;</span><br><span class="line">    provideCompletionItems(model, position, context, token) &#123;</span><br><span class="line">        <span class="keyword">const</span> suggestion = _this.yourHintsArray.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                label: item,</span><br><span class="line">                quickSuggestions: <span class="literal">false</span>,</span><br><span class="line">                kind: monaco.languages.CompletionItemKind[<span class="string">'Text'</span>], <span class="comment">// 用于定义提示的icon，可参照官网进行选择</span></span><br><span class="line">                insertText: item</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            suggestions: suggestion</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    triggerCharacters: [<span class="string">'.'</span>] <span class="comment">// 选择触发提示的字符</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 当组件注销时，记得注销提示</span></span><br><span class="line"><span class="keyword">this</span>.monacoHints.dispose()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编辑区域，右键操作</span></span><br><span class="line"><span class="keyword">const</span> definedContextMenu = [&#123;</span><br><span class="line">    id: <span class="string">'executeSQL'</span>,</span><br><span class="line">    label: <span class="string">'执行'</span>,</span><br><span class="line">    keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter],</span><br><span class="line">    contextMenuGroupId: <span class="string">'navigation'</span>,</span><br><span class="line">    contextMenuOrder: <span class="number">1</span>,</span><br><span class="line">    run: <span class="function"><span class="keyword">function</span>(<span class="params">editor</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 处理函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;]</span><br><span class="line">definedContextMenu.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    _this.monacoEditor.addAction(item)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/27/Monaco-Editor%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckapalkn30000ku8ze55hcu84" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Monaco-Editor%E3%80%81%E7%BC%96%E8%BE%91%E5%99%A8%E3%80%81Vue%E3%80%81SQL%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" rel="tag">Monaco Editor、编辑器、Vue、SQL自动补全</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-理解闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/20/%E7%90%86%E8%A7%A3%E9%97%AD%E5%8C%85/" class="article-date">
-  <time datetime="2020-05-20T11:56:02.000Z" itemprop="datePublished">2020-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/20/%E7%90%86%E8%A7%A3%E9%97%AD%E5%8C%85/">理解闭包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>闭包是一个函数在词法域外被调用时，仍可以记住并访问它的词法域。</p>
-<p>例如</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outerFun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">innerFun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> innerFun;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> imp = outerFun(); <span class="comment">// Oh, I saw  closure.</span></span><br><span class="line">imp();</span><br></pre></td></tr></table></figure>
-<p>内部函数innerFun()的词法作用域是outerFun，执行outerFun()语句之后，我们将它的返回值（即innerFun()）赋值给变量imp，此时imp指向了外部函数outerFun()的作用域，这个方式我们称之为闭包。</p>
-<p>闭包能够让我们在定义词法作用域之外的地方，仍可以访问该作用域</p>
-<h2 id="闭包的使用"><a href="#闭包的使用" class="headerlink" title="闭包的使用"></a>闭包的使用</h2><p>我们将通过回调函数、作用域、模块来理解闭包及其作用。</p>
-<h3 id="闭包和回调函数"><a href="#闭包和回调函数" class="headerlink" title="闭包和回调函数"></a>闭包和回调函数</h3><p>即使我们没有深入理解过闭包，翻翻看我们的代码，闭包随处可见。比如写一个延时函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(message);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">wait(<span class="string">'Hello, closure!'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>再比如，我们使用jQuery方式来实现绑定事件函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whichButton</span>(<span class="params">name, selector</span>) </span>&#123;</span><br><span class="line">  $(selector).click(<span class="function"><span class="keyword">function</span> <span class="title">activator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Activating: "</span> + name);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">whichButton(<span class="string">"Closure Button1"</span>, <span class="string">"#button1"</span>);</span><br><span class="line">whichButton(<span class="string">"Closuer Button2"</span>, <span class="string">"#button2"</span>);</span><br></pre></td></tr></table></figure>
-<p>当我们传递回调函数给上述代码片段中的timer、事件绑定函数，Ajax请求、以及其他异步任务时，就是在使用闭包了。</p>
-<h3 id="闭包和作用域"><a href="#闭包和作用域" class="headerlink" title="闭包和作用域"></a>闭包和作用域</h3><p>闭包共享同一个全局变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, i*<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码的结果是：每隔一秒，输出一个5，共输出5次。虽然每次循环，都会复制i，但这五次循环都在共享同一个全局变量，最后一次循环i为5，故此输出5个5。如果我们想实现每个一秒，输出一次，输出结果分别是1、2、3、4、5的话：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, i*<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>let声明的迭代器变量，每次循环都会声明一次。复制代码到你的浏览器中运行下，多么神奇的块级作用域。</p>
-<h3 id="闭包和模块化"><a href="#闭包和模块化" class="headerlink" title="闭包和模块化"></a>闭包和模块化</h3><p>闭包的方式能够让我们以模块化的方式开发代码，通过提供公共API，达到模块化编程。例如，一个模块示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CoolModule</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> something = <span class="string">'cool'</span>;</span><br><span class="line">  <span class="keyword">var</span> another = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(something);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doAnother</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(another.join(<span class="string">'!'</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    doSomething: doSomething,</span><br><span class="line">    doAnother: doAnother</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = CoolModule();</span><br><span class="line">foo.doSomething();</span><br><span class="line">foo.doAnother();</span><br></pre></td></tr></table></figure>
-
-<p>在JS中，这种类型的编码称为模块。模块化编程需要满足以下两个条件：</p>
-<p>必须有一个外部函数，并且至少被调用一次（每次调用都创建一个实例）。</p>
-<p>函数内部至少返回一个内部函数，内部函数拥有外部函数的作用域，并且可以访问和改变函数的变量。</p>
-<p>在ES6中，引入了class语法来支持模块化编程，可以使用import的方式来引入一个或者多个模块，使用export方式来提供公共API。这种方式定义的模块内容被看作一个闭包，类似于基于闭包的函数型模块。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/%E7%90%86%E8%A7%A3%E9%97%AD%E5%8C%85/" data-id="ckaq9o7pr0001m88zcl60ghs0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AD%E5%8C%85-JS/" rel="tag">闭包 JS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monaco-Editor%E3%80%81%E7%BC%96%E8%BE%91%E5%99%A8%E3%80%81Vue%E3%80%81SQL%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" rel="tag">Monaco Editor、编辑器、Vue、SQL自动补全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85-JS/" rel="tag">闭包 JS</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Monaco-Editor%E3%80%81%E7%BC%96%E8%BE%91%E5%99%A8%E3%80%81Vue%E3%80%81SQL%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" style="font-size: 10px;">Monaco Editor、编辑器、Vue、SQL自动补全</a> <a href="/tags/%E9%97%AD%E5%8C%85-JS/" style="font-size: 10px;">闭包 JS</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/06/11/Vue%E4%B8%AD%E7%9B%91%E5%90%AC%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/">监听浏览器关闭事件，并发送异步请求</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/28/%E4%BD%BF%E7%94%A8Flex%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E5%B7%A6%E5%8F%B3%E6%8B%96%E5%8A%A8%E5%92%8C%E4%B8%8A%E4%B8%8B%E6%8B%96%E5%8A%A8/">使用Flex布局实现左右拖动和上下拖动</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/27/Monaco-Editor%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">Monaco Editor在Vue项目中的使用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/20/%E7%90%86%E8%A7%A3%E9%97%AD%E5%8C%85/">理解闭包</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 gyn<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
+    <!-- /.container -->
 </nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Yanning&#39;s Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2020/06/11/Vue中监听浏览器关闭事件/">
+        <h2 class="post-title">
+            监听浏览器关闭事件，并发送异步请求
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            项目需求监听用户关闭浏览器事件，若关闭则发送异步请求给后端。
+问题问题1：浏览器关闭事件并不会触发vue实例的beforeDestroy和destroyed函数，所以无法在这两个钩子函数中处理浏览器关闭事件。
+解决方式：注册unload事件，参见MDN。
+问题2：用户代理通常会忽略在unload事件处理器中的异步XMLHttpRequest。
+解决方式：使用navigator.sendBea......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by gyn on
+        2020-06-11
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/05/28/使用Flex布局实现左右拖动和上下拖动/">
+        <h2 class="post-title">
+            使用Flex布局实现左右拖动和上下拖动
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            最近的项目需要实现左右拖动和上下拖动的样式，先是使用float实现了简易版，后看到同事使用Flex布局实现了拖动效果，抽取成了组件。
+最终效果
+
+源码：github
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by gyn on
+        2020-05-28
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/05/27/Monaco-Editor在Vue项目中的使用/">
+        <h2 class="post-title">
+            Monaco Editor在Vue项目中的使用
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            本文以SQL为例，展示Monaco Editor在Vue项目中的使用
+安装包Monaco Editor的安装1$ npm install --save monaco-editor
+
+Webpack打包Monaco Editor的插件1$ npm install --save-dev monaco-editor-webpack-plugin
+
+Monaco Editor汉化包1$ npm in......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by gyn on
+        2020-05-27
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/05/20/理解闭包/">
+        <h2 class="post-title">
+            理解闭包
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            闭包是一个函数在词法域外被调用时，仍可以记住并访问它的词法域。
+例如
+123456789function outerFun() &#123;  var a = 2;  function innerFun() &#123;    console.log(a);  &#125;  return innerFun;&#125;var imp = outerFun(); // Oh, I saw  ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by gyn on
+        2020-05-20
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+    
+</ul>
 
 
 
+                <!-- 如果开启评论功能 -->
+                
 
-<script src="/js/script.js"></script>
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="/img/avatar.jpg" />
+                        
+
+                        
+                            <p>Cat!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/Yanning12320201">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/GYNstyle">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Yanning12320201">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/GYNstyle">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Yanning&#39;s Blog 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me" target="_blank" rel="noopener">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://guoyanning.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
 
 
 
 
-  </div>
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
 </body>
+
 </html>
