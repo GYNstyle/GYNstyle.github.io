@@ -13,11 +13,11 @@
 
     <title>
         
-          About - Yanning的博客 | Yanning&#39;s Blog
+          有点难弄的计时器 - Yanning的博客 | Yanning&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://guoyanning.com/about/">
+    <link rel="canonical" href="http://guoyanning.com/2022/08/07/有点难弄的计时器/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -153,152 +153,153 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://guoyanning.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>About</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">Hey, this is Yanning.</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Stopwatch" title="Stopwatch">Stopwatch</a>
+                        
+                          <a class="tag" href="/tags/#Countdown" title="Countdown">Countdown</a>
+                        
+                          <a class="tag" href="/tags/#Clock" title="Clock">Clock</a>
+                        
+                    </div>
+                    <h1>有点难弄的计时器</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by gyn on
+                        2022-08-07
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <blockquote>
-<p>写写代码，做做设计，看看产品。<br>世界那么大，多玩玩看看。</p>
-</blockquote>
-<p>FE developer</p>
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>在前端页面开发中，偶尔需要展示不同的计时或时间显示方式，本文将给出三种类型的相关示例。（持续更新中…）</p>
+<h3 id="计时器-Stopwatch"><a href="#计时器-Stopwatch" class="headerlink" title="计时器 (Stopwatch)"></a>计时器 (Stopwatch)</h3><p>通过<code>useState</code>，<code>useRef</code>和<code>interval</code>实现的计时器，点击<code>Start</code>开始计时，点击<code>Stop</code>结束计时。计时器显示格式<code>hh:mm:ss</code>，当然，也可以通过修改<code>getTimeString</code>来显示你想要的计时器格式。完成代码可在<a href="https://codesandbox.io/s/brave-bose-ucss92?file=/src/App.js" target="_blank" rel="noopener">CodeSandbox</a>上查看。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> StopWatch = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [startTime, setStartTime] = useState(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> [now, setNow] = useState(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> intervalRef = useRef(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleStart = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setStartTime(<span class="built_in">Date</span>.now());</span><br><span class="line">    setNow(<span class="built_in">Date</span>.now());</span><br><span class="line"></span><br><span class="line">    clearInterval(intervalRef.current);</span><br><span class="line">    intervalRef.current = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setNow(<span class="built_in">Date</span>.now());</span><br><span class="line">    &#125;, <span class="number">10</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleStop = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearInterval(intervalRef.current);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timeString = getTimeString(now, startTime);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1&gt;Time passed: &#123;timeString&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Button type="primary" shape="round" onClick=&#123;handleStart&#125;&gt;</span></span><br><span class="line"><span class="regexp">        Start</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Button&gt;</span><br><span class="line">      &lt;Button</span><br><span class="line">        type=<span class="string">"primary"</span></span><br><span class="line">        shape=<span class="string">"round"</span></span><br><span class="line">        danger</span><br><span class="line">        className=<span class="string">"stop-btn"</span></span><br><span class="line">        onClick=&#123;handleStop&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        Stop</span><br><span class="line">      &lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> StopWatch;</span><br></pre></td></tr></table></figure>
 
 
-                <!-- 如果开启评论功能 -->
+
+                <hr>
+
                 
-                    <hr>
 
+                <ul class="pager">
                     
-
                     
-
-
+                        <li class="next">
+                            <a href="/2020/06/11/Vue中监听浏览器关闭事件/" data-toggle="tooltip" data-placement="top" title="监听浏览器关闭事件，并发送异步请求">Next Post &rarr;</a>
+                        </li>
                     
+                </ul>
 
-                    
-
-
+                
 
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS 3333</a></h5>
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Stopwatch" title="Stopwatch">Stopwatch</a>
                         
-                            <a href="/tags/#Monaco Editor" title="Monaco Editor" rel="1">Monaco Editor</a>
+                          <a class="tag" href="/tags/#Countdown" title="Countdown">Countdown</a>
                         
-                            <a href="/tags/#编辑器" title="编辑器" rel="1">编辑器</a>
-                        
-                            <a href="/tags/#Vue" title="Vue" rel="1">Vue</a>
-                        
-                            <a href="/tags/#SQL自动补全" title="SQL自动补全" rel="1">SQL自动补全</a>
-                        
-                            <a href="/tags/#Stopwatch" title="Stopwatch" rel="1">Stopwatch</a>
-                        
-                            <a href="/tags/#Countdown" title="Countdown" rel="1">Countdown</a>
-                        
-                            <a href="/tags/#Clock" title="Clock" rel="1">Clock</a>
-                        
-                            <a href="/tags/#闭包 JS" title="闭包 JS" rel="1">闭包 JS</a>
+                          <a class="tag" href="/tags/#Clock" title="Clock">Clock</a>
                         
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/img/avatar.jpg" />
-                        
-
-                        
-                            <p>Cat!</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/Yanning12320201">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-
-                            
-
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/GYNstyle">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
