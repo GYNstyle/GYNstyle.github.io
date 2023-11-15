@@ -13,11 +13,11 @@
 
     <title>
         
-          使用Flex布局实现左右拖动和上下拖动 - Yanning的博客 | Yanning&#39;s Blog
+          Module Not Found的部署问题竟归结于Git的Config? - Yanning的博客 | Yanning&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://guoyanning.com/2020/05/28/使用Flex布局实现左右拖动和上下拖动/">
+    <link rel="canonical" href="http://guoyanning.com/2023/11/13/ignoreCase/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -171,12 +171,20 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                          <a class="tag" href="/tags/#React" title="React">React</a>
+                        
+                          <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                        
+                          <a class="tag" href="/tags/#npm" title="npm">npm</a>
+                        
+                          <a class="tag" href="/tags/#流水线" title="流水线">流水线</a>
+                        
                     </div>
-                    <h1>使用Flex布局实现左右拖动和上下拖动</h1>
+                    <h1>Module Not Found的部署问题竟归结于Git的Config?</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by gyn on
-                        2020-05-28
+                        2023-11-13
                     </span>
                 </div>
             </div>
@@ -195,10 +203,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>最近的项目需要实现左右拖动和上下拖动的样式，先是使用float实现了简易版，后看到同事使用Flex布局实现了拖动效果，抽取成了组件。</p>
-<p>最终效果</p>
-<p><img src="/images/drag-sample.png" alt="alt"></p>
-<p>源码：<a href="https://github.com/GYNstyle/drag-sample" target="_blank" rel="noopener">github</a></p>
+                <h2 id="一些背景"><a href="#一些背景" class="headerlink" title="一些背景"></a>一些背景</h2><p>今年7月进入新公司，参与一个已有项目的UI（部分新功能）改造，在了解完原有项目的问题之后，决定新建项目去实现全新的UI和新功能（整个过程无比杂乱，准备写一篇文件分析这次改造的问题）。新项目使用<code>React 18</code> + <code>React Router 5</code> + <code>Webpack 5</code>，CICD是公司自建的内部工具。</p>
+<h2 id="本地运行和打包没问题，但流水线构建报错"><a href="#本地运行和打包没问题，但流水线构建报错" class="headerlink" title="本地运行和打包没问题，但流水线构建报错"></a>本地运行和打包没问题，但流水线构建报错</h2><h3 id="报错排查阶段1-node版本过低"><a href="#报错排查阶段1-node版本过低" class="headerlink" title="报错排查阶段1 - node版本过低"></a>报错排查阶段1 - node版本过低</h3><p>查看流水线构建实例的报错日志，其主要的报错问题是：</p>
+<ul>
+<li>npm install 报错：package-lock.json lockfileVersion 报错</li>
+<li>npm build 报错：Module Not Found和SCSS文件打包失败</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR in xxx.jsx</span><br><span class="line">Module not found: Error: Can't resolve '../xxx' in '../routes'</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Error in xxx.scss ...</span><br><span class="line">Module build failed (from xxx):</span><br><span class="line">...</span><br><span class="line">const overrideOptions = metaConfig.config ?? &#123;&#125;;</span><br><span class="line">SyntaxError: Unexpected token ? at xxx</span><br></pre></td></tr></table></figure>
+
+<p>还好报错日志很详细，能够看到流水线使用的node版本：<code>node-v10.15.2</code>。联系CICD开发人员，找到更新流水线node版本入口，更新node版本（平台提供的node版本最高为14）。</p>
+<h3 id="报错排查阶段2-奇怪的Module-Not-Found问题"><a href="#报错排查阶段2-奇怪的Module-Not-Found问题" class="headerlink" title="报错排查阶段2 - 奇怪的Module Not Found问题"></a>报错排查阶段2 - 奇怪的Module Not Found问题</h3><p>在更新完node版本后，重跑流水线，npm build的Module not found问题依然存在，但这次给出了更详细的报错说明：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ERROR in xxx.jsx</span><br><span class="line">Module not found: Error: Can't resolve '../xxx' in '../routes'</span><br><span class="line">...</span><br><span class="line">Field 'browser' doesn't contain a valid alias configuration using description file: ../xx/xx/package.json noe extension:</span><br><span class="line">    doesn't exist .js  ../xx.js </span><br><span class="line">    doesn't exist .jsx ../xx.jsx</span><br><span class="line">    doesn't exist as a directory ../xx</span><br></pre></td></tr></table></figure>
+
+<p>在这个项目中，组件通过<code>[组件名]/index.jsx</code>的方式去组织，并且在<code>Webpack</code>配置了<code>resolve</code>，这里报错显示<code>routes</code>路由文件中引入的一个组件未找到（其他组件都正常）。多次检查改组件的名称和路径，并没有发现问题。此时，尝试去掉组件名的目录，使用<code>[组件名].jsx</code>的方式去创建组件，然后重新触发流水线，流水线无报错！所以，到底是哪里出现了问题！？</p>
+<h2 id="罪魁祸首-Git-Config的ignoreCase"><a href="#罪魁祸首-Git-Config的ignoreCase" class="headerlink" title="罪魁祸首 - Git Config的ignoreCase"></a>罪魁祸首 - Git Config的ignoreCase</h2><p>虽然已经解决了这个奇怪的问题，但仍未找到根本原因，于是继续去定位问题。</p>
+<p>为什么其他组件的引入没有问题，就单独这个组件报错？事出蹊跷，必有猫腻🐱！</p>
+<p>回想起曾经看到组件的命名方式不是<code>caselCase</code>，当时顺手改了一下目录的名称。灵光一闪，如果仓库的git config的ignoreCase为true的情况，git会忽略大小写的变更！查看了<code>.git</code>下的<code>config</code>文件，果不其然：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ignorecase &#x3D; true</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>再去查看远程仓库上的代码，文件名果然还是全小写的命名，而非修改过后的<code>camelCase</code>方式。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>查看Git的官方文档，<code>ignoreCase</code>这个参数默认为<code>false</code>，虽然不知内部的仓库为什么设定了<code>true</code>属性，但觉得这次的排查可供遇到相同问题的朋友提供借鉴意义～</p>
+<p>（为了预防自己遇到这样的问题，快把ignoreCase设置为false吧）</p>
 
 
                 <hr>
@@ -207,13 +234,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2020/06/11/Vue中监听浏览器关闭事件/" data-toggle="tooltip" data-placement="top" title="监听浏览器关闭事件，并发送异步请求">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2020/05/27/Monaco-Editor在Vue项目中的使用/" data-toggle="tooltip" data-placement="top" title="Monaco Editor在Vue项目中的使用">Next Post &rarr;</a>
+                            <a href="/2022/08/07/有点难弄的计时器/" data-toggle="tooltip" data-placement="top" title="有点难弄的计时器">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -240,6 +263,14 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#React" title="React">React</a>
+                        
+                          <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                        
+                          <a class="tag" href="/tags/#npm" title="npm">npm</a>
+                        
+                          <a class="tag" href="/tags/#流水线" title="流水线">流水线</a>
+                        
                     </div>
                 </section>
                 

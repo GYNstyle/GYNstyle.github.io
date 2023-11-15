@@ -13,11 +13,11 @@
 
     <title>
         
-          Yanning的博客 | Yanning&#39;s Blog
+          window.history.pushState你用对了吗？ - Yanning的博客 | Yanning&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://guoyanning.com/archives/2020/06/">
+    <link rel="canonical" href="http://guoyanning.com/2021/11/13/hash路由/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -153,7 +153,170 @@
 
 
     <!-- Main Content -->
-    <!-- Default Archive layout, we use archives instead. -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://guoyanning.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#路由" title="路由">路由</a>
+                        
+                          <a class="tag" href="/tags/#URL" title="URL">URL</a>
+                        
+                          <a class="tag" href="/tags/#React" title="React">React</a>
+                        
+                          <a class="tag" href="/tags/#Hash Route" title="Hash Route">Hash Route</a>
+                        
+                    </div>
+                    <h1>window.history.pushState你用对了吗？</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by gyn on
+                        2021-11-13
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>在React项目中，我们使用<code>react-route-dom</code>的钩子函数去处理React组件中路由的跳转，而在非React组件中，我们还是会用到<code>window.history</code>和<code>window.location</code>去处理页面跳转的情况。</p>
+<p>在我的一个项目中，使用了<code>Axios</code>的拦截器去统一处理API的返回：若API返回信息是用户登录信息超时，则跳转到登录页面。代码示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.response.use(</span><br><span class="line">    (response) =&gt; &#123;</span><br><span class="line">        <span class="comment">// 示例代码</span></span><br><span class="line">        <span class="keyword">const</span> resStatus = response.status</span><br><span class="line">        <span class="keyword">if</span> (resStatus === TIMEOUT) &#123;</span><br><span class="line">            <span class="comment">// 跳转到login页面</span></span><br><span class="line">            <span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="string">''</span>, <span class="string">'/#/login'</span>);</span><br><span class="line">            <span class="built_in">window</span>.history.go();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>在<code>localhost</code>开发和测试时，能够正常跳转，但在测试环境下，跳转会出现问题。测试环境下，前端资源的整体路径是:<code>https://domainname/folder1/folder2/foloder3/index.html</code>，打开后没有跳转到<code>https://domainname/folder1/folder2/foloder3/index.html#/login</code>，而是跳转到<code>https://domainname#/login</code>。</p>
+<p>查看<code>pushState</code>的MDN文档，找到问题：</p>
+<blockquote>
+<p>The new URL can be any URL in the same origin as the current URL. In contrast, setting window.location keeps you at the same document only if you modify only the hash.</p>
+</blockquote>
+<p>API文档清晰的说明了<code>pushState</code>中的URL只会保留同一个origin，如果想保留保留整个文档而只改变hash，需要使用<code>window.location</code>。由于项目用的是hash路由，所以这里应该改成：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (resStatus === TIMEOUT) &#123;</span><br><span class="line">    <span class="comment">// 跳转到login页面</span></span><br><span class="line">    <span class="built_in">window</span>.location.href = <span class="string">'/#/login'</span>;</span><br><span class="line">    <span class="comment">// 可省略</span></span><br><span class="line">    <span class="built_in">window</span>.location.reload();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虽然<code>window.location</code>返回的是一个只读对象，但仍可给其赋值，从而导航到另一个页面。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2022/08/07/有点难弄的计时器/" data-toggle="tooltip" data-placement="top" title="有点难弄的计时器">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/06/11/Vue中监听浏览器关闭事件/" data-toggle="tooltip" data-placement="top" title="监听浏览器关闭事件，并发送异步请求">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#路由" title="路由">路由</a>
+                        
+                          <a class="tag" href="/tags/#URL" title="URL">URL</a>
+                        
+                          <a class="tag" href="/tags/#React" title="React">React</a>
+                        
+                          <a class="tag" href="/tags/#Hash Route" title="Hash Route">Hash Route</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
     <!-- Footer -->
     <!-- Footer -->
